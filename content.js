@@ -1,38 +1,115 @@
-const courseMap = {
-    "design and analysis of algorithms": "CS2004",
-    "data mining": "CS2010",
-    "machine learning techniques": "CS2012",
-    "dbms lab": "CS2801T",
-    "machine learning lab": "CS2806",
-    "environmental sustainability assessment": "BS1502",
-    "statistical inference": "MA2002",
-    "database management systems": "CS2001T"
-};
-
-const facultyMap = {
+const programData = {
     "AI-DS": {
-        "A": {
-            "design and analysis of algorithms": "Dr. Nimisha Ghosh",
-            "data mining": "Dr. Surya K",
-            "machine learning techniques": "Dr. Chandrakala",
-            "dbms lab": "Dr. Veeramani",
-            "machine learning lab": "Dr. Chandrakala",
-            "environmental sustainability assessment": "Dr. Angel",
-            "statistical inference": "Dr. Sujatha",
-            "database management systems": "Dr. Veeramani"
+        "design and analysis of algorithms": {
+            code: "CS2004",
+            faculty: {
+                "A": "Dr. Nimisha Ghosh",
+                "B": "Dr. Nimisha Ghosh"
+            }
         },
-        "B": {
-            "design and analysis of algorithms": "Dr. Nimisha Ghosh",
-            "data mining": "Dr. Surya K",
-            "machine learning techniques": "Dr. Rudarshis Majumder",
-            "dbms lab": "Dr. Avisha Das",
-            "machine learning lab": "Dr. Priya",
-            "environmental sustainability assessment": "Dr. Angel",
-            "statistical inference": "Dr. Mansur Alam",
-            "database management systems": "Dr. Veeramani"
+        "data mining": {
+            code: "CS2010",
+            faculty: {
+                "A": "Dr. Surya K",
+                "B": "Dr. Surya K"
+            }
+        },
+        "machine learning techniques": {
+            code: "CS2012",
+            faculty: {
+                "A": "Dr. Chandrakala",
+                "B": "Dr. Rudarshis Majumder"
+            }
+        },
+        "dbms lab": {
+            code: "CS2801T",
+            faculty: {
+                "A": "Dr. Veeramani",
+                "B": "Dr. Avisha Das"
+            }
+        },
+        "machine learning lab": {
+            code: "CS2806",
+            faculty: {
+                "A": "Dr. Chandrakala",
+                "B": "Dr. Priya"
+            }
+        },
+        "environmental sustainability assessment": {
+            code: "BS1502",
+            faculty: {
+                "A": "Dr. Angel",
+                "B": "Dr. Angel"
+            }
+        },
+        "statistical inference": {
+            code: "MA2002",
+            faculty: {
+                "A": "Dr. Sujatha",
+                "B": "Dr. Mansur Alam"
+            }
+        },
+        "database management systems": {
+            code: "CS2001T",
+            faculty: {
+                "A": "Dr. Veeramani",
+                "B": "Dr. Veeramani"
+            }
+        }
+    },
+
+    "Cyber": {
+        "design and analysis of algorithms": {
+            code: "CS2004",
+            faculty: { "A": "Dr. Debajyoti Biswas" }
+        },
+        "computer networks": {
+            code: "CS2002",
+            faculty: { "A": "Dr. Pownraj" }
+        },
+        "foundation of machine learning": {
+            code: "CS2016",
+            faculty: { "A": "Dr. Kandappan" }
+        },
+        "linguistics": {
+            code: "EN1502",
+            faculty: { "A": "Dr. Srilata" }
+        },
+        "system security": {
+            code: "CS2702",
+            faculty: { "A": "Dr. Sivasubramanian" }
+        },
+        "networks lab": {
+            code: "CS2802",
+            faculty: { "A": "Dr. Pownraj" }
+        },
+        "machine learning lab": {
+            code: "CS2808",
+            faculty: { "A": "Dr. Priya" }
+        },
+        "graph theory": {
+            code: "MA2004",
+            faculty: { "A": "Dr. Prasanna Lakshmi" }
         }
     }
 };
+
+
+function normalize(str) {
+    return str.toLowerCase().trim().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ');
+}
+
+function matches(detected, courseName) {
+    const normDetected = normalize(detected);
+    const normCourse = normalize(courseName);
+    if (normDetected.includes(normCourse) || normCourse.includes(normDetected)) return true;
+    const wordsDetected = new Set(normDetected.split(' '));
+    const wordsCourse = new Set(normCourse.split(' '));
+    const intersection = new Set([...wordsDetected].filter(x => wordsCourse.has(x)));
+    const union = new Set([...wordsDetected, ...wordsCourse]);
+    const jaccard = intersection.size / union.size;
+    return jaccard > 0.5;
+}
 
 function detectCourseName() {
     const breadcrumbLinks = document.querySelectorAll(".breadcrumb a");
@@ -50,28 +127,35 @@ function detectCourseName() {
 
 function fillTextInputs(program, section) {
     const inputs = document.querySelectorAll("input[type='text']");
-    function getCourseFullName() {
-        const name = detectCourseName().toLowerCase().trim();
-        const code = courseMap[name];
-        if (code) {
-            return `${code} - ${detectCourseName()}`;
+    
+function getCourseFullName(program) {
+    const detectedRaw = detectCourseName();
+    const detected = detectedRaw.toLowerCase().trim();
+
+    const programCourses = programData[program];
+
+    if (programCourses) {
+        for (let courseName in programCourses) {
+            if (matches(detected, courseName)) {
+                return `${programCourses[courseName].code} - ${detectedRaw}`;
+            }
         }
-        // fallback if not found
-        return detectCourseName();
     }
+
+    return detectedRaw;
+}
 
     function getFacultyName(program, section) {
         const detected = detectCourseName().toLowerCase().trim();
-        const programData = facultyMap[program];
-        if (!programData) return "";
-        const sectionData = programData[section];
-        if (!sectionData) return "";
-        for (let key in sectionData) {
-            if (detected.includes(key)) {
-                return sectionData[key];
+        const programDataEntry = programData[program];
+        if (!programDataEntry) return "";
+        for (let courseName in programDataEntry) {
+            if (matches(detected, courseName)) {
+                const faculty = programDataEntry[courseName].faculty[section];
+                return faculty || "";
             }
         }
-        return ""; // fallback if not found
+        return "";
     }
 
     inputs.forEach((input) => {
@@ -90,7 +174,7 @@ function fillTextInputs(program, section) {
                 const faculty = getFacultyName(program, section);
                 if (faculty) input.value = faculty;
             }
-            else if (label.includes("course")) input.value = getCourseFullName();
+            else if (label.includes("course")) input.value = getCourseFullName(program);
             else input.value = "N/A";
         }
     });

@@ -13,9 +13,6 @@ A Chrome extension that automatically fills Moodle **course feedback** and **fac
 
   * Program (AI-DS / IoT / Cyber)
   * Section (A / B)
-* 🟦 Floating **“Auto Fill” button** on page
-* ⌨️ Keyboard shortcut: `Ctrl + Shift + F`
-* ✅ Success toast notification
 * 🔒 **No auto-submit** (you stay in control)
 
 ---
@@ -42,7 +39,7 @@ Since this extension is not on the Chrome Web Store, follow these steps:
 
 ### 1. Download the project
 
-* Click **Code → Download ZIP**
+* In this repo, click **Code → Download ZIP**
 * Extract the folder
 
 ---
@@ -51,7 +48,7 @@ Since this extension is not on the Chrome Web Store, follow these steps:
 
 Go to:
 
-```
+```web
 chrome://extensions/
 ```
 
@@ -90,7 +87,7 @@ OR
 
 👉 Use shortcut:
 
-```
+```key
 Ctrl + Shift + F
 ```
 
