@@ -91,6 +91,71 @@ const programData = {
             code: "MA2004",
             faculty: { "A": "Dr. Prasanna Lakshmi" }
         }
+    },
+    "IoT": {
+        "agile scrum process": {
+            code: "CS2000",
+            faculty: {
+                "A": "Dr. Amsaprabhaa M",
+                "B": "Dr. Amsaprabhaa M"
+            }
+        },
+        "computer networks": {
+            code: "CS2002",
+            faculty: {
+                "A": "Dr. U Padmavathi",
+                "B": "Dr. Rourab Paul"
+            }
+        },
+        "design and analysis of algorithms": {
+            code: "CS2004",
+            faculty: {
+                "A": "Dr. Kandappan V A",
+                "B": "Dr. Kandappan V A"
+            }
+        },
+        "introduction to sensor technology": {
+            code: "CS2006",
+            faculty: {
+                "A": "Dr. Badri Narayanan K B",
+                "B": "Dr. Badri Narayanan K B"
+            }
+        },
+        "operating systems": {
+            code: "CS2008",
+            faculty: {
+                "A": "Dr. Vidhusha S",
+                "B": "Dr. Vidhusha S"
+            }
+        },
+        "design thinking": {
+            code: "CS2800",
+            faculty: {
+                "A": "Dr. Dinesh G",
+                "B": "Dr. Dinesh G"
+            }
+        },
+        "networks lab": {
+            code: "CS2802",
+            faculty: {
+                "A": "Dr. U Padmavathi",
+                "B": "Dr. Rourab Paul"
+            }
+        },
+        "os lab": {
+            code: "CS2804",
+            faculty: {
+                "A": "Dr. U Padmavathi",
+                "B": "Dr. Shambhu Kumar Sinha"
+            }
+        },
+        "environmental sustainability assessment": {
+            code: "BS1502",
+            faculty: {
+                "A": "Dr. Angel JessieLeena A",
+                "B": "Dr. Angel JessieLeena A"
+            }
+        }
     }
 };
 
