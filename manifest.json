@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Lazy Feedback Form Filler",
+  "version": "4.0",
+  "permissions": ["scripting", "activeTab", "storage"],
+  "host_permissions": ["*://lms.snuchennai.edu.in/*"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://lms.snuchennai.edu.in/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

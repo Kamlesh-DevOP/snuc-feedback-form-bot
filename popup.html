@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      width: 240px;
+      font-family: Arial;
+      padding: 10px;
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    label {
+      font-size: 13px;
+      margin-top: 8px;
+      display: block;
+    }
+
+    select, button {
+      width: 100%;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #2b7cff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1a5fd0;
+    }
+  </style>
+</head>
+<body>
+
+  <h3>Auto Fill</h3>
+
+  <label>Program</label>
+  <select id="program">
+    <option value="AI-DS">BTech AI-DS</option>
+    <option value="IoT">BTech IoT</option>
+    <option value="Cyber">BTech Cybersecurity</option>
+  </select>
+
+  <label>Section</label>
+  <select id="section">
+    <option value="A">Section A</option>
+    <option value="B">Section B</option>
+  </select>
+
+  <button id="run">Fill Current Page</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
