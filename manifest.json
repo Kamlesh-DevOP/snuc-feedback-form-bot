@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Lazy Feedback Form Filler",
-  "version": "4.0",
+  "version": "1.0.0",
+  "description": "Auto-fill Moodle course and faculty feedback forms quickly and accurately.",
   "permissions": ["scripting", "activeTab", "storage"],
   "host_permissions": ["*://lms.snuchennai.edu.in/*"],
   "action": {
@@ -12,5 +13,10 @@
       "matches": ["*://lms.snuchennai.edu.in/*"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
 }

@@ -18,7 +18,7 @@ const programData = {
             code: "CS2012",
             faculty: {
                 "A": "Dr. Chandrakala",
-                "B": "Dr. Rudarshis Majumder"
+                "B": "Dr. Rudrashis Majumder"
             }
         },
         "dbms lab": {
