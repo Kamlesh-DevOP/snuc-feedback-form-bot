@@ -2,7 +2,7 @@
 
 A Microsoft Edge extension that automatically fills Moodle **course feedback** and **faculty feedback** forms for SNU Chennai students.
 
-link to extension: <https://microsoftedge.microsoft.com/addons/detail/lazy-feedback-form-filler/dlfjobppmakohncckgcblajllpiioiha>
+link to Edge extension *(works only on Edge)* : <https://microsoftedge.microsoft.com/addons/detail/lazy-feedback-form-filler/dlfjobppmakohncckgcblajllpiioiha>
 
 ---
 
